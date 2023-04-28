@@ -4,7 +4,9 @@ import br.com.bsh.algafoodapi.domain.entity.Cozinha;
 import br.com.bsh.algafoodapi.domain.repository.CozinhaRepository;
 import br.com.bsh.algafoodapi.model.CozinhasXmlWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +29,15 @@ public class CozinhaController {
     }
 
     @GetMapping("/{id}")
-    public Cozinha buscar(@PathVariable Long id) {
-        return cozinhaRepository.buscar(id);
+    public ResponseEntity<Cozinha> buscar(@PathVariable Long id) {
+        Cozinha cozinha = cozinhaRepository.buscar(id);
+        return cozinha == null? ResponseEntity.notFound().build() : ResponseEntity.ok(cozinha);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cozinha salvar(@RequestBody Cozinha cozinha) {
+        return cozinhaRepository.salvar(cozinha);
     }
 
 }
