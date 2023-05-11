@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import br.com.bsh.algafoodapi.domain.entity.Cozinha;
 import br.com.bsh.algafoodapi.domain.repository.CozinhaRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -34,8 +35,13 @@ public class CozinhaRepositoryImpl implements CozinhaRepository {
 
 	@Transactional
 	@Override
-	public void remover(Cozinha cozinha) {
-		cozinha = buscar(cozinha.getId());
+	public void remover(Long id) {
+		Cozinha cozinha = buscar(id);
+
+		if (cozinha == null) {
+			throw new EmptyResultDataAccessException(1);
+		}
+
 		entityManager.remove(cozinha);
 	}
 
