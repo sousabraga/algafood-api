@@ -7,3 +7,5 @@ INSERT INTO restaurante(nome, taxa_frete, cozinha_id) VALUES ('KFC', 15, 1);
 INSERT INTO estado(nome) VALUES ('Ceará');
 INSERT INTO estado(nome) VALUES ('Minas Gerais');
 INSERT INTO estado(nome) VALUES ('Rio Grande do Norte');
+
+INSERT INTO cidade(nome, estado_id) VALUES ('Fortaleza', 1);
