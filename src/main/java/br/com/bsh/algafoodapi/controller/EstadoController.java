@@ -16,13 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.bsh.algafoodapi.domain.entity.Cidade;
-import br.com.bsh.algafoodapi.domain.entity.Cozinha;
 import br.com.bsh.algafoodapi.domain.entity.Estado;
 import br.com.bsh.algafoodapi.domain.exception.EntidadeEmUsoException;
 import br.com.bsh.algafoodapi.domain.exception.EntidadeNaoEncontradaException;
 import br.com.bsh.algafoodapi.domain.repository.EstadoRepository;
-import br.com.bsh.algafoodapi.domain.service.CadastroCidadeService;
 import br.com.bsh.algafoodapi.domain.service.CadastroEstadoService;
 
 @RestController
